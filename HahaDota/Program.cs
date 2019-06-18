@@ -19,7 +19,7 @@ namespace HahaDota
             this.intelligence = intelligence;
             this.attak = attak;
         }
-        public String getName()
+        public virtual String getName()
         {
             return name;
         }
@@ -35,16 +35,30 @@ namespace HahaDota
         {
             return agility;
         }
-        public int getШntelligence()
+        public virtual int getIntelligence()
         {
             return intelligence;
         }
         public virtual String getInfo()
         {
-            return "Name: " + name + "hp: " + hp + "strength: " + strength + "agility: " + agility + "intelligence: " + intelligence + "attak: " + attak;
+            return Console.WriteLine( "Name: " + name + "hp: " + hp + "strength: " + strength + "agility: " + agility + "intelligence: " + intelligence + "attak: " + attak;)
         }
 
     }
+    class First : Hero
+    {
+        First(String name, int hp, int strength, int agility, int intelligence, int attak) : base
+        {
+            this.name = name;
+        }
+
+            public override String getName()
+        {
+            return "First";
+        }
+        }
+    }
+
     
 
     class Program
