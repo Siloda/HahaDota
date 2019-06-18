@@ -1,0 +1,4 @@
+C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.csprojAssemblyReference.cache
+C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.csproj.CoreCompileInputs.cache
+C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.AssemblyInfoInputs.cache
+C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.AssemblyInfo.cs

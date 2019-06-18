@@ -23,15 +23,15 @@ namespace HahaDota
         {
             return name;
         }
-        public int getHp()
+        public virtual int getHp()
         {
             return hp;
         }
-        public int getStrenght()
+        public virtual int getStrenght()
         {
             return strength;
         }
-        public int getAgillity()
+        public virtual int getAgillity()
         {
             return agility;
         }
@@ -47,17 +47,15 @@ namespace HahaDota
     }
     class First : Hero
     {
-        First(String name, int hp, int strength, int agility, int intelligence, int attak) : base()
-        {
-            this.name = name;
-        }
-
-            public override String getName()
+        public First(String name = "difst", int hp = 100, int strength = 10, int agility = 10, int intelligence = 10, int attak = 150);
+        
+        public override String getName()
         {
             return "First";
         }
-        }
+    
     }
+
 
     
 
