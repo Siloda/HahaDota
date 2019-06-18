@@ -41,13 +41,13 @@ namespace HahaDota
         }
         public virtual String getInfo()
         {
-            return Console.WriteLine( "Name: " + name + "hp: " + hp + "strength: " + strength + "agility: " + agility + "intelligence: " + intelligence + "attak: " + attak;)
+            return "Name: " + name + "hp: " + hp + "strength: " + strength + "agility: " + agility + "intelligence: " + intelligence + "attak: " + attak;
         }
 
     }
     class First : Hero
     {
-        First(String name, int hp, int strength, int agility, int intelligence, int attak) : base
+        First(String name, int hp, int strength, int agility, int intelligence, int attak) : base()
         {
             this.name = name;
         }
