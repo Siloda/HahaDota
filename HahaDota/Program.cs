@@ -4,24 +4,24 @@ namespace HahaDota
 {
     class Hero
     {
-        protected String name;
         protected int hp;
         protected int strength;
         protected int agility;
         protected int intelligence;
         protected int attak;
-        public Hero(String name, int hp, int strength, int agility, int intelligence, int attak)
+        public Hero()
         {
-            this.name = name;
+            getInfo();
+        }
+        public Hero(int hp, int strength, int agility, int intelligence, int attak)
+        {
+            
             this.hp = hp;
             this.strength = strength;
             this.agility = agility;
             this.intelligence = intelligence;
             this.attak = attak;
-        }
-        public virtual String getName()
-        {
-            return name;
+        
         }
         public virtual int getHp()
         {
@@ -41,29 +41,38 @@ namespace HahaDota
         }
         public virtual String getInfo()
         {
-            return "Name: " + name + "hp: " + hp + "strength: " + strength + "agility: " + agility + "intelligence: " + intelligence + "attak: " + attak;
+            return "hp: " + hp + "strength: " + strength + "agility: " + agility + "intelligence: " + intelligence + "attak: " + attak;
         }
 
     }
+    
     class First : Hero
     {
-        public First(String name = "difst", int hp = 100, int strength = 10, int agility = 10, int intelligence = 10, int attak = 150);
-        
-        public override String getName()
+
+        public First(int hp, int strength, int agility, int intelligence, int attak)
         {
-            return "First";
+            this.hp = 10;
+            this.strength = 10;
+            this.agility = 10;
+            this.intelligence = 10;
+            this.attak = 10;
+            getHp();
+            getInfo();
+
+        }       
+        public override String getInfo()
+        {
+            return "hp: " + hp + "strength: " + strength + "agility: " + agility + "intelligence: " + intelligence + "attak: " + attak;
         }
-    
-    }
 
-
-    
+    } 
 
     class Program
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("");
+            First name = new First(100,10,10,10,10);
+            name.getInfo();
         }
     }
 }

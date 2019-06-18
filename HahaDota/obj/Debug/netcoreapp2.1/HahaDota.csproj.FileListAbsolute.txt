@@ -2,3 +2,10 @@ C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.c
 C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.csproj.CoreCompileInputs.cache
 C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.AssemblyInfoInputs.cache
 C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.AssemblyInfo.cs
+C:\Users\Silod\source\repos\HahaDota\HahaDota\bin\Debug\netcoreapp2.1\HahaDota.deps.json
+C:\Users\Silod\source\repos\HahaDota\HahaDota\bin\Debug\netcoreapp2.1\HahaDota.runtimeconfig.json
+C:\Users\Silod\source\repos\HahaDota\HahaDota\bin\Debug\netcoreapp2.1\HahaDota.runtimeconfig.dev.json
+C:\Users\Silod\source\repos\HahaDota\HahaDota\bin\Debug\netcoreapp2.1\HahaDota.dll
+C:\Users\Silod\source\repos\HahaDota\HahaDota\bin\Debug\netcoreapp2.1\HahaDota.pdb
+C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.dll
+C:\Users\Silod\source\repos\HahaDota\HahaDota\obj\Debug\netcoreapp2.1\HahaDota.pdb
