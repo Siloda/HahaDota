@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Silod\\source\\repos\\HahaDota\\HahaDota\\HahaDota.csproj": {}
+    "C:\\Users\\Silod\\source\\repos\\HaHaDota\\HahaDota\\HahaDota.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Silod\\source\\repos\\HahaDota\\HahaDota\\HahaDota.csproj": {
+    "C:\\Users\\Silod\\source\\repos\\HaHaDota\\HahaDota\\HahaDota.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Silod\\source\\repos\\HahaDota\\HahaDota\\HahaDota.csproj",
+        "projectUniqueName": "C:\\Users\\Silod\\source\\repos\\HaHaDota\\HahaDota\\HahaDota.csproj",
         "projectName": "HahaDota",
-        "projectPath": "C:\\Users\\Silod\\source\\repos\\HahaDota\\HahaDota\\HahaDota.csproj",
+        "projectPath": "C:\\Users\\Silod\\source\\repos\\HaHaDota\\HahaDota\\HahaDota.csproj",
         "packagesPath": "C:\\Users\\Silod\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Silod\\source\\repos\\HahaDota\\HahaDota\\obj\\",
+        "outputPath": "C:\\Users\\Silod\\source\\repos\\HaHaDota\\HahaDota\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"

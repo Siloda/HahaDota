@@ -3,11 +3,33 @@ using System.Collections.Generic;
 
 namespace HahaDota
 {
-  
-   public class Hero
+
+    public class Engine
+    {
+        private static Engine instance;
+
+        private Engine()
+        {
+
+        }
+
+        public static Engine Instance
+        {
+            get
+            {
+                if (instance == null)
+                {
+                    instance = new Engine();
+                }
+                return instance;
+            }
+        }
+        public List<Hero> heroesList = new List<Hero>();
+    }
+    public class Hero
     {
         protected String name;
-        protected int hp;
+        public int hp;
         protected int strength;
         protected int agility;
         protected int intelligence;
@@ -17,11 +39,11 @@ namespace HahaDota
         {
 
         }
-        public virtual int setHitHero (Hero opponent)
+        public void HitHero(int heroIndex)
         {
-            return  opponent.hp = hp - strike;
+            Engine en = Engine.Instance;
+            en.heroesList[heroIndex].hp--;
         }
-        
         public String getName()
         {
             return name;
@@ -44,7 +66,7 @@ namespace HahaDota
         }
         public int getAgirlitySrike()
         {
-            return strike= (agility / 3) + (strength / 5) + (intelligence / 7);
+            return strike = (agility / 3) + (strength / 5) + (intelligence / 7);
         }
         public int getIntelligenceSrike()
         {
@@ -54,7 +76,7 @@ namespace HahaDota
         {
             return strike = (strength / 3) + (intelligence / 5) + (agility / 7);
         }
-       
+
         public virtual String getInfo()
         {
 
@@ -62,7 +84,7 @@ namespace HahaDota
         }
 
     }
-    
+
     public class Pudge : Hero
     {
         private String pudgeName = "Pudge";
@@ -81,6 +103,11 @@ namespace HahaDota
             intelligence = pudgeIntelligence;
             strike = pudgeStrike;
             getStrengthSrike();
+            getHp();
+        }
+        public override int getHp()
+        {
+            return hp;
         }
         public override String getInfo()
         {
@@ -106,13 +133,13 @@ namespace HahaDota
             strike = viperStrike;
             getIntelligenceSrike();
         }
-       
+
+
         public override String getInfo()
         {
             return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
         }
     }
-
     public class Luna : Hero
     {
         private String lunaName = "Luna";
@@ -161,77 +188,58 @@ namespace HahaDota
             return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
         }
     }
-    public class Sniper : Hero 
+    public class Sniper : Hero
     {
         private String sniperName = "Sniper";
 
         private int sniperHp = 580;
-        private static int sniperStrength =19;
-        private static int sniperAgility=21;
-        private static int sniperIntelligence=15;
+        private static int sniperStrength = 19;
+        private static int sniperAgility = 21;
+        private static int sniperIntelligence = 15;
         private int sniperStrike;
-        
+
         public Sniper()
         {
             name = sniperName;
             hp = sniperHp;
             strength = sniperStrength;
             agility = sniperAgility;
-            intelligence = sniperIntelligence;            
+            intelligence = sniperIntelligence;
             strike = sniperStrike;
             getAgirlitySrike();
         }
 
         public override String getInfo()
         {
-            return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike; 
+            return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
         }
     }
     class Program
-    { 
+    {
+        static Engine en;
         static void Main(string[] args)
         {
-            List<Hero> people = new List<Hero>(4);
-            people.Add(new Sniper());
-            people.Add(new Pudge());
-            people.Add(new Viper());
-            people.Add(new Luna());
-            people.Add(new Lion());
+            //инициализируем переменную для синглтона
+            en = Engine.Instance;
 
+            //добавляем в лист который в синглтоне хероев. 
+            //Ток вначале его очистим, чтоб при повторной загрузке сцены их не стало 10 (5 + 5)
+            en.heroesList.Clear();
+            en.heroesList.Add(new Pudge());
+            en.heroesList.Add(new Viper());
+            en.heroesList.Add(new Luna());
+            en.heroesList.Add(new Lion());
+            en.heroesList.Add(new Sniper());
 
-            foreach (Hero p in people)
-            {
-                //Console.WriteLine(p.getInfo());
-            }
-
-
-
-
-
-            Sniper sniper = new Sniper();
-            Pudge pudge = new Pudge();
-
-            do
-            {
-                sniper.setHitHero(pudge);
-                pudge.getHp();
-                Console.WriteLine(" ");
-                Console.WriteLine(pudge.getInfo());
-                Console.WriteLine();
-                if (pudge.pudgeHp>0)
-                {
-                    pudge.getHp();
-                }
-
-            }
-            while (pudge.pudgeHp > 0);
-
-            
 
 
         }
-
-       
     }
-    
 }
+
+
+        
+
+
+
+
