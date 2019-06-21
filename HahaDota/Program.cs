@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
 
 namespace HahaDota
 {
-
-    public class Engine
+    public class Engine //синглтон
     {
         private static Engine instance;
 
@@ -24,25 +24,39 @@ namespace HahaDota
                 return instance;
             }
         }
-        public List<Hero> heroesList = new List<Hero>();
+        public List<Hero> heroesList = new List<Hero>();// массив героев в сингл тоне
+        public List<Item> itemList = new List<Item>(); //массив предметов в сингл тоне
     }
-    public class Hero
+
+    //Родительский класс героев 
+    public class Hero 
     {
-        protected String name;
+        public String name;
         public int hp;
-        protected int strength;
-        protected int agility;
-        protected int intelligence;
-        protected int attak;
-        protected int strike;
+        public int strength;
+        public int agility;
+        public int intelligence;
+        public int strike;
         public Hero()
         {
 
         }
+        //получение бафа
+        public void HeroBuff(int itemIndex, int heroIndex)
+        {
+
+            Engine en = Engine.Instance;
+            en.heroesList[heroIndex].strength += en.itemList[itemIndex].strength;
+            en.heroesList[heroIndex].agility += en.itemList[itemIndex].agility;
+            en.heroesList[heroIndex].intelligence += en.itemList[itemIndex].intelligence;
+
+        }
+        
+        //получения хита
         public void HitHero(int heroIndex)
         {
             Engine en = Engine.Instance;
-            en.heroesList[heroIndex].hp--;
+            en.heroesList[heroIndex].hp -= strike;
         }
         public String getName()
         {
@@ -84,158 +98,255 @@ namespace HahaDota
         }
 
     }
-
-    public class Pudge : Hero
+    // родительский класс предметов
+    public class Item 
     {
-        private String pudgeName = "Pudge";
-        public int pudgeHp = 700;
-        private static int pudgeStrength = 25;
-        private static int pudgeAgility = 14;
-        private static int pudgeIntelligence = 16;
-        private int pudgeStrike;
+        public int strength;
+        public int agility;
+        public int intelligence;
 
-        public Pudge()
+        public Item()
         {
-            name = pudgeName;
-            hp = pudgeHp;
-            strength = pudgeStrength;
-            agility = pudgeAgility;
-            intelligence = pudgeIntelligence;
-            strike = pudgeStrike;
-            getStrengthSrike();
-            getHp();
+
         }
-        public override int getHp()
+        public int getStrenght()
         {
-            return hp;
+            return strength;
         }
-        public override String getInfo()
+        public int getAgility()
         {
-            return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            return agility;
         }
-    }
-    public class Viper : Hero
+        public int getIntelligence()
+        {
+            return intelligence;
+        }
+    } 
+        public class Stik:Item
+        {
+          private static int stikIntelligence=155;
+        public Stik()
+        {
+            intelligence = stikIntelligence;
+        }
+
+        }
+    public class Sword : Item
     {
-        private String viperName = "Viper";
-        private int viperHp = 620;
-        private static int viperStrength = 21;
-        private static int viperAgility = 21;
-        private static int viperIntelligence = 15;
-        private int viperStrike;
-
-        public Viper()
+        private static int swordStrength = 155;
+        public Sword()
         {
-            name = viperName;
-            hp = viperHp;
-            strength = viperStrength;
-            agility = viperAgility;
-            intelligence = viperIntelligence;
-            strike = viperStrike;
-            getIntelligenceSrike();
+            agility = swordStrength;
+            
         }
 
-
-        public override String getInfo()
-        {
-            return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
-        }
     }
-    public class Luna : Hero
+    public class Bow : Item
     {
-        private String lunaName = "Luna";
-        private int lunaHp = 520;
-        private static int lunaStrength = 16;
-        private static int lunaAgility = 18;
-        private static int lunaIntelligence = 16;
-        private int lunaStrike;
+        private static int bowAgility =155;
+        public Bow()
+        {
+            agility = bowAgility;
+        }
 
-        public Luna()
-        {
-            name = lunaName;
-            hp = lunaHp;
-            strength = lunaStrength;
-            agility = lunaAgility;
-            intelligence = lunaIntelligence;
-            strike = lunaStrike;
-            getAgirlitySrike();
-        }
-        public override String getInfo()
-        {
-            return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
-        }
     }
-    public class Lion : Hero
-    {
-        private String lionName = "Lion";
-        private int lionHp = 560;
-        private static int lionStrength = 18;
-        private static int lionAgility = 15;
-        private static int lionIntelligence = 18;
-        private int emberSpiritStrike;
-
-        public Lion()
+    public class Pudge : Hero           //наследовательный класс c инициализацией значений
         {
-            name = lionName;
-            hp = lionHp;
-            strength = lionStrength;
-            agility = lionAgility;
-            intelligence = lionIntelligence;
-            strike = emberSpiritStrike;
-            getStrengthSrike();
+            public String pudgeName = "Pudge";
+            public int pudgeHp = 700;
+            private static int pudgeStrength = 25;
+            private static int pudgeAgility = 14;
+            private static int pudgeIntelligence = 16;
+            private int pudgeStrike;
+
+            public Pudge()
+            {
+                name = pudgeName;
+                hp = pudgeHp;
+                strength = pudgeStrength;
+                agility = pudgeAgility;
+                intelligence = pudgeIntelligence;
+                strike = pudgeStrike;
+                getStrengthSrike();
+                
+
+            }
+
+
+            public override String getInfo()
+            {
+                return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            }
         }
-        public override String getInfo()
+        public class Viper : Hero
         {
-            return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            private String viperName = "Viper";
+            private int viperHp = 620;
+            private static int viperStrength = 21;
+            private static int viperAgility = 21;
+            private static int viperIntelligence = 15;
+            private int viperStrike;
+
+            public Viper()
+            {
+                name = viperName;
+                hp = viperHp;
+                strength = viperStrength;
+                agility = viperAgility;
+                intelligence = viperIntelligence;
+                strike = viperStrike;
+                getIntelligenceSrike();
+            }
+
+
+            public override String getInfo()
+            {
+                return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            }
         }
-    }
-    public class Sniper : Hero
-    {
-        private String sniperName = "Sniper";
-
-        private int sniperHp = 580;
-        private static int sniperStrength = 19;
-        private static int sniperAgility = 21;
-        private static int sniperIntelligence = 15;
-        private int sniperStrike;
-
-        public Sniper()
+        public class Luna : Hero
         {
-            name = sniperName;
-            hp = sniperHp;
-            strength = sniperStrength;
-            agility = sniperAgility;
-            intelligence = sniperIntelligence;
-            strike = sniperStrike;
-            getAgirlitySrike();
-        }
+            private String lunaName = "Luna";
+            private int lunaHp = 520;
+            private static int lunaStrength = 16;
+            private static int lunaAgility = 18;
+            private static int lunaIntelligence = 16;
+            private int lunaStrike;
 
-        public override String getInfo()
+            public Luna()
+            {
+                name = lunaName;
+                hp = lunaHp;
+                strength = lunaStrength;
+                agility = lunaAgility;
+                intelligence = lunaIntelligence;
+                strike = lunaStrike;
+                getAgirlitySrike();
+            }
+            public override String getInfo()
+            {
+                return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            }
+        }
+        public class Lion : Hero
         {
-            return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            private String lionName = "Lion";
+            private int lionHp = 560;
+            private static int lionStrength = 18;
+            private static int lionAgility = 15;
+            private static int lionIntelligence = 18;
+            private int emberSpiritStrike;
+
+            public Lion()
+            {
+                name = lionName;
+                hp = lionHp;
+                strength = lionStrength;
+                agility = lionAgility;
+                intelligence = lionIntelligence;
+                strike = emberSpiritStrike;
+                getStrengthSrike();
+            }
+            public override String getInfo()
+            {
+                return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            }
         }
-    }
-    class Program
-    {
-        static Engine en;
-        static void Main(string[] args)
+        public class Sniper : Hero
         {
-            //инициализируем переменную для синглтона
-            en = Engine.Instance;
+            private String sniperName = "Sniper";
 
-            //добавляем в лист который в синглтоне хероев. 
-            //Ток вначале его очистим, чтоб при повторной загрузке сцены их не стало 10 (5 + 5)
-            en.heroesList.Clear();
-            en.heroesList.Add(new Pudge());
-            en.heroesList.Add(new Viper());
-            en.heroesList.Add(new Luna());
-            en.heroesList.Add(new Lion());
-            en.heroesList.Add(new Sniper());
+            private int sniperHp = 580;
+            private static int sniperStrength = 19;
+            private static int sniperAgility = 21;
+            private static int sniperIntelligence = 15;
+            private int sniperStrike;
 
+            public Sniper()
+            {
+                name = sniperName;
+                hp = sniperHp;
+                strength = sniperStrength;
+                agility = sniperAgility;
+                intelligence = sniperIntelligence;
+                strike = sniperStrike;
+                getAgirlitySrike();
+            }
 
-
+            public override String getInfo()
+            {
+                return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
+            }
         }
-    }
+        class Program
+        {
+        //объявляем синглтон
+        static Engine en; 
+            static void Main(string[] args)
+            {
+                //инициализируем переменную для синглтона
+                en = Engine.Instance;
+
+            //добавляем героев в лист, который в синглтоне. 
+            //Только вначале его очистим, чтоб при повторной загрузке сцены их не стало 10 (5 + 5)
+                en.heroesList.Clear();
+                en.heroesList.Add(new Pudge());
+                en.heroesList.Add(new Viper());
+                en.heroesList.Add(new Luna());
+                en.heroesList.Add(new Lion());
+                en.heroesList.Add(new Sniper());
+
+            //добавляем предметы в лист, который в синглтоне. 
+            //повторим процедуру чистки
+               en.itemList.Clear();
+               en.itemList.Add(new Stik());
+               en.itemList.Add(new Sword());
+               en.itemList.Add(new Bow());
+
+
+            Random item = new Random();
+            int item1Index = item.Next(0,2);
+            int item2Index = item1Index;
+
+            while (item1Index == item2Index)
+            {
+                item2Index = item.Next(0,2);
+            }
+           
+                //Выбор игроков
+                Random hero= new Random();
+                int hero1Index = hero.Next(0, 4);
+                int hero2Index = hero1Index;
+                while (hero1Index == hero2Index)
+                {
+                    hero2Index = hero.Next(0, 4);
+                }
+
+            en.heroesList[hero1Index].HeroBuff(item1Index, hero1Index);
+            en.heroesList[hero2Index].HeroBuff(item2Index, hero2Index);
+            //Битва
+            while (en.heroesList[hero1Index].hp > 0 && en.heroesList[hero2Index].hp > 0)
+                {
+
+                    en.heroesList[hero1Index].HitHero(hero2Index);
+                    en.heroesList[hero2Index].HitHero(hero1Index);
+                    Console.WriteLine("Hero1: " + en.heroesList[hero1Index].name + "  " + "HP: " + en.heroesList[hero1Index].hp + "             " + "Hero2: " + en.heroesList[hero2Index].name + "  " + "HP: " + en.heroesList[hero2Index].hp);
+                    Thread.Sleep(1000);
+
+                }
+
+                //Обьявление результата
+                if (en.heroesList[hero1Index].hp > 0 && en.heroesList[hero2Index].hp <= 0)
+                    Console.WriteLine("1st win");
+                else if (en.heroesList[hero1Index].hp <= 0 && en.heroesList[hero2Index].hp > 0)
+                    Console.WriteLine("2nd win");
+                else if (en.heroesList[hero1Index].hp == 0 && en.heroesList[hero2Index].hp == 0)
+                    Console.WriteLine("draw");
+            }
+        }
+
 }
+
 
 
         
