@@ -37,28 +37,27 @@ namespace HahaDota
         public int agility;
         public int intelligence;
         public int strike;
+        public Item ite;
         public Hero()
         {
 
         }
+
         //получение бафа
-        public void HeroBuff(int itemIndex, int heroIndex)
+        public Hero(Item predmet)
         {
-
-            
-            Engine en = Engine.Instance;
-            en.heroesList[heroIndex].strength += en.itemList[itemIndex].strength;
-            en.heroesList[heroIndex].agility += en.itemList[itemIndex].agility;
-            en.heroesList[heroIndex].intelligence += en.itemList[itemIndex].intelligence;
-
+            this.strength += predmet.strength2;
+            this.agility += predmet.agility2;
+            this.intelligence += predmet.intelligence2;
         }
-        
         //получения хита
         public void HitHero(int heroIndex)
         {
             Engine en = Engine.Instance;
             en.heroesList[heroIndex].hp -= strike;
         }
+
+     
         public String getName()
         {
             return name;
@@ -102,54 +101,68 @@ namespace HahaDota
     // родительский класс предметов
     public class Item 
     {
-        public int strength;
-        public int agility;
-        public int intelligence;
+        public int strength2;
+        public int agility2;
+        public int intelligence2;
 
         public Item()
         {
 
         }
-        public int getStrenght()
+        public virtual int getStrenght()
         {
-            return strength;
+            return strength2;
         }
-        public int getAgility()
+        public virtual int getAgility()
         {
-            return agility;
+            return agility2;
         }
-        public int getIntelligence()
+        public virtual int getIntelligence()
         {
-            return intelligence;
+            return intelligence2;
         }
-    } 
-    public class Stik:Item
-        {
-          private static int stikIntelligence=155;
+    }
+    public class Stik : Item
+    {
+        private static int stikIntelligence = 155;
         public Stik()
         {
-            intelligence = stikIntelligence;
+            intelligence2 = stikIntelligence;
         }
+        public override int getIntelligence()
+        {
 
+            return intelligence2;
         }
+    }
     public class Sword : Item
     {
         private static int swordStrength = 155;
         public Sword()
         {
-            agility = swordStrength;
-            
+            agility2 = swordStrength;
+
+        }
+        public int getStrength()
+        {
+
+                return strength2;
         }
 
-    }
+    }  
     public class Bow : Item
     {
-        private static int bowAgility =155;
+        private static int bowAgility = 155;
         public Bow()
         {
-            agility = bowAgility;
+            agility2 = bowAgility;
         }
+        public override int  getAgility()
+        {
 
+            return agility2;
+
+        }
     }
     public class Pudge : Hero           //наследовательный класс c инициализацией значений
         {
@@ -292,7 +305,7 @@ namespace HahaDota
 
             //добавляем героев в лист, который в синглтоне. 
             //Только вначале его очистим, чтоб при повторной загрузке сцены их не стало 10 (5 + 5)
-            en.heroesList.Clear();
+                en.heroesList.Clear();
                 en.heroesList.Add(new Pudge());
                 en.heroesList.Add(new Viper());
                 en.heroesList.Add(new Luna());
@@ -306,6 +319,7 @@ namespace HahaDota
                en.itemList.Add(new Sword());
                en.itemList.Add(new Bow());
 
+            
 
             Random item = new Random();
             int item1Index = item.Next(0,2);
@@ -315,9 +329,12 @@ namespace HahaDota
             {
                 item2Index = item.Next(0,2);
             }
-           
-                //Выбор игроков
-                Random hero= new Random();
+
+            
+
+
+            //Выбор игроков
+            Random hero= new Random();
                 int hero1Index = hero.Next(0, 4);
                 int hero2Index = hero1Index;
                 while (hero1Index == hero2Index)
@@ -325,9 +342,8 @@ namespace HahaDota
                     hero2Index = hero.Next(0, 4);
                 }
 
-            en.heroesList[hero1Index].HeroBuff(item1Index, hero1Index);
-            en.heroesList[hero2Index].HeroBuff(item2Index, hero2Index);
-            //Битва
+            en.heroesList.Add(new Hero(en.itemList[item1Index]));
+
             while (en.heroesList[hero1Index].hp > 0 && en.heroesList[hero2Index].hp > 0)
                 {
 
