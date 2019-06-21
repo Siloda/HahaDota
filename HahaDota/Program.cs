@@ -45,6 +45,7 @@ namespace HahaDota
         public void HeroBuff(int itemIndex, int heroIndex)
         {
 
+            
             Engine en = Engine.Instance;
             en.heroesList[heroIndex].strength += en.itemList[itemIndex].strength;
             en.heroesList[heroIndex].agility += en.itemList[itemIndex].agility;
@@ -122,7 +123,7 @@ namespace HahaDota
             return intelligence;
         }
     } 
-        public class Stik:Item
+    public class Stik:Item
         {
           private static int stikIntelligence=155;
         public Stik()
@@ -178,7 +179,7 @@ namespace HahaDota
                 return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
             }
         }
-        public class Viper : Hero
+    public class Viper : Hero
         {
             private String viperName = "Viper";
             private int viperHp = 620;
@@ -204,7 +205,7 @@ namespace HahaDota
                 return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
             }
         }
-        public class Luna : Hero
+    public class Luna : Hero
         {
             private String lunaName = "Luna";
             private int lunaHp = 520;
@@ -228,7 +229,7 @@ namespace HahaDota
                 return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
             }
         }
-        public class Lion : Hero
+    public class Lion : Hero
         {
             private String lionName = "Lion";
             private int lionHp = 560;
@@ -252,7 +253,7 @@ namespace HahaDota
                 return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
             }
         }
-        public class Sniper : Hero
+    public class Sniper : Hero
         {
             private String sniperName = "Sniper";
 
@@ -278,18 +279,20 @@ namespace HahaDota
                 return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
             }
         }
-        class Program
+    class Program
         {
         //объявляем синглтон
+        
         static Engine en; 
             static void Main(string[] args)
             {
                 //инициализируем переменную для синглтона
                 en = Engine.Instance;
+               
 
             //добавляем героев в лист, который в синглтоне. 
             //Только вначале его очистим, чтоб при повторной загрузке сцены их не стало 10 (5 + 5)
-                en.heroesList.Clear();
+            en.heroesList.Clear();
                 en.heroesList.Add(new Pudge());
                 en.heroesList.Add(new Viper());
                 en.heroesList.Add(new Luna());
