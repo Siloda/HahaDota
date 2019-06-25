@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Threading;
 
 namespace HahaDota
 {
@@ -40,6 +41,8 @@ namespace HahaDota
         public void buildLevelMap()
         {
             Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine("Играть на стрелочках");
+            Thread.Sleep(5000);
             frame.Add(new string[] { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });

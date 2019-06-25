@@ -36,7 +36,7 @@ namespace HahaDota
         {
             while (true)
             {
-                
+                Console.WriteLine("Введи 1, чтобы начать"); 
                 string selection = Console.ReadLine();
                 switch (selection)
                 {
@@ -85,7 +85,7 @@ namespace HahaDota
                             Console.WriteLine("2nd win");
                         else if (En.heroesList[hero1Index].hp <= 0 && En.heroesList[hero2Index].hp <= 0)
                             Console.WriteLine("draw");
-                        Map.buildLevelMap();
+                        Map.render();
 
                         continue;
                     case "2":
