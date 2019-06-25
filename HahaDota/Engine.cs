@@ -4,9 +4,11 @@ using System.Threading;
 
 namespace HahaDota
 {
-    public class Engine 
-    {
+    public class Engine
         
+    {
+        static Map Map;
+
         protected static Engine En;
 
         public Engine()
@@ -27,6 +29,7 @@ namespace HahaDota
         }
         public List<Hero> heroesList = new List<Hero>();
         public List<Item> itemList = new List<Item>();
+     
 
 
         public void Match()
@@ -81,8 +84,10 @@ namespace HahaDota
                         else if (En.heroesList[hero1Index].hp <= 0 && En.heroesList[hero2Index].hp > 0)
                             Console.WriteLine("2nd win");
                         else if (En.heroesList[hero1Index].hp <= 0 && En.heroesList[hero2Index].hp <= 0)
-                            Console.WriteLine("draw"); ;
-                        break;
+                            Console.WriteLine("draw");
+                        Map.buildLevelMap();
+
+                        continue;
                     case "2":
                         Console.WriteLine("Exit");
                         break;

@@ -25,6 +25,8 @@ namespace HahaDota
                 return Inf;
             }
         }
+
+
   
 
 
@@ -34,9 +36,9 @@ namespace HahaDota
 
         public void HelloWorld()
         {
-            Console.WriteLine("                                               Приветствую тебя путник");
+            Console.WriteLine("Приветствую тебя путник");
             Thread.Sleep(1000);
-            Console.WriteLine("Нажмите 1 или 2");
+            Console.WriteLine("Как долго ты готов тут пробыть?");
             Thread.Sleep(5000);
             Console.WriteLine("Нажмите 1 или 2");
 

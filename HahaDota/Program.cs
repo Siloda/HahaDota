@@ -15,12 +15,15 @@ namespace HahaDota
 
         static Engine En;
         static Inform Inf;
+        static Map Lvl;
 
         static void Main(string[] args)
         {
 
             En = Engine.Letsgo;
             Inf = Inform.Information;
+            Lvl = Map.ThisWorld;
+
             
 
             En.heroesList.Clear();
@@ -37,13 +40,20 @@ namespace HahaDota
             En.itemList.Add(new Bow());
             En.itemList.Add(new Empty());
 
+            Lvl.frame.Clear();
+            Lvl.buildLevelMap();
+           
+            
+            
 
+            
 
-            Inf.HelloWorld();
-            En.Match();
+                     
+
+            //En.Match();
 
             }
-        }
+    }
 }
 
 
