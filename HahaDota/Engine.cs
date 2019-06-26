@@ -7,9 +7,9 @@ namespace HahaDota
     public class Engine
         
     {
-        static Map Map;
 
         protected static Engine En;
+        
 
         public Engine()
         {
@@ -27,16 +27,25 @@ namespace HahaDota
                 return En;
             }
         }
+        public List<string[]> frame = new List<string[]>();
         public List<Hero> heroesList = new List<Hero>();
         public List<Item> itemList = new List<Item>();
-     
+        
+
+        public void returnToLevel()
+        {
+            Map map = Map.ThisWorld;
+            map.render();
+
+        }
 
 
         public void Match()
         {
             while (true)
             {
-                Console.WriteLine("Введи 1, чтобы начать"); 
+                Console.WriteLine("Введи 1, чтобы начать бой");
+                Console.WriteLine("Введи 2, чтобы отказаться");
                 string selection = Console.ReadLine();
                 switch (selection)
                 {
@@ -65,7 +74,7 @@ namespace HahaDota
                         En.heroesList[hero2Index].takeItem(hero2Index, item2Index);
 
 
-
+                        
                         while (En.heroesList[hero1Index].hp > 0 && En.heroesList[hero2Index].hp > 0)
 
                         {
@@ -85,7 +94,9 @@ namespace HahaDota
                             Console.WriteLine("2nd win");
                         else if (En.heroesList[hero1Index].hp <= 0 && En.heroesList[hero2Index].hp <= 0)
                             Console.WriteLine("draw");
-                        Map.render();
+                        returnToLevel();
+
+
 
                         continue;
                     case "2":

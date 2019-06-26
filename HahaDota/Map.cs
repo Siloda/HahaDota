@@ -7,7 +7,7 @@ namespace HahaDota
 {
     public class Map
     {
-
+        
         protected static Map World;
 
         public Map()
@@ -32,7 +32,7 @@ namespace HahaDota
         static bool gameStatus = true;
         static string hero = "X";
         public string wall = "#";
-        static string target = "E";
+        static string exit = "E";
         static string emptyCell = " ";
         static string enemy = "P";
 
@@ -42,7 +42,7 @@ namespace HahaDota
         {
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine("Играть на стрелочках");
-            Thread.Sleep(5000);
+            Thread.Sleep(3000);
             frame.Add(new string[] { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
@@ -59,7 +59,7 @@ namespace HahaDota
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", "#", "#", " ", " ", "P", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", "X", "#", "#", "#", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
-            frame.Add(new string[] { "#", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
+            frame.Add(new string[] { "#", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "E", "#", });
             frame.Add(new string[] { "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", "#", });
             render();
             while (gameStatus)

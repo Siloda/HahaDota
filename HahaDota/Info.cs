@@ -34,7 +34,7 @@ namespace HahaDota
 
 
 
-        public void HelloWorld()
+       /* public void HelloWorld()
         {
             Console.WriteLine("Приветствую тебя путник");
             Thread.Sleep(1000);
@@ -42,6 +42,6 @@ namespace HahaDota
             Thread.Sleep(5000);
             Console.WriteLine("Нажмите 1 или 2");
 
-        }
+        }*/
     }
 }
