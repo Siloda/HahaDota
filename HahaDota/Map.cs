@@ -8,6 +8,8 @@ namespace HahaDota
     public class Map
     {
         
+
+
         protected static Map World;
 
         public Map()
@@ -48,14 +50,14 @@ namespace HahaDota
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
-            frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
+            frame.Add(new string[] { "#", " ", " ", " ", "P", " ", " ", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", "E", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
+            frame.Add(new string[] { "#", " ", " ", " ", " ", "P", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
-            frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
-            frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
+            frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", "P", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", "#", "#", " ", " ", "P", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
             frame.Add(new string[] { "#", "X", "#", "#", "#", " ", "#", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", " ", "#", });
@@ -76,10 +78,12 @@ namespace HahaDota
             for (int x = 0; x < frame.Count; x++)
             {
                 Console.WriteLine(string.Join(" ", frame[x]));
-            }
+            }                        
         }
+        
         public void moveHero(ConsoleKeyInfo keyInfo)
         {
+            Inform Inf = Inform.Information;
             Engine En = Engine.Letsgo;
             for (int x = frame.Count - 1; x >= 0; x--)
             {
@@ -99,7 +103,14 @@ namespace HahaDota
                             {
                                 frame[x][y] = emptyCell;
                                 frame[x - 1][y] = hero;
-                                En.Match();
+                                En.Ask();
+                                return;
+                            }
+                            if ((x - 1) >= 0 && frame[x - 1][y] == exit)
+                            {
+                                frame[x][y] = emptyCell;
+                                frame[x - 1][y] = hero;
+                                Inf.Winner();
                                 return;
                             }
 
@@ -118,9 +129,17 @@ namespace HahaDota
                             {
                                 frame[x][y] = emptyCell;
                                 frame[x + 1][y] = hero;
-                                En.Match();
+                                En.Ask();
                                 return;
                             }
+                            else if ((x + 1) <= (frame.Count - 1) && frame[x + 1][y] == exit)
+                            {
+                                frame[x][y] = emptyCell;
+                                frame[x + 1][y] = hero;
+                                Inf.Winner(); ;
+                                return;
+                            }
+                         
                         }
                         else if (keyInfo.Key == ConsoleKey.LeftArrow)
                         {
@@ -134,7 +153,14 @@ namespace HahaDota
                             {
                                 frame[x][y] = emptyCell;
                                 frame[x][y - 1] = hero;
-                                En.Match();
+                                En.Ask();
+                                return;
+                            }
+                            else if ((y - 1) >= 0 && frame[x][y - 1] == exit)
+                            {
+                                frame[x][y] = emptyCell;
+                                frame[x][y - 1] = hero;
+                                Inf.Winner();
                                 return;
                             }
                         }
@@ -150,7 +176,14 @@ namespace HahaDota
                             {
                                 frame[x][y] = emptyCell;
                                 frame[x][y + 1] = hero;
-                                En.Match();
+                                En.Ask();
+                                return;
+                            }
+                            else if ((y + 1) <= (frame[x].Length - 1) && frame[x][y + 1] == exit)
+                            {
+                                frame[x][y] = emptyCell;
+                                frame[x][y + 1] = hero;
+                                Inf.Winner();
                                 return;
                             }
                         }
