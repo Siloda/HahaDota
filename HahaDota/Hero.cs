@@ -190,7 +190,6 @@ namespace HahaDota
                 return "Name: " + name + "\n hp: " + hp + "\n strength: " + strength + "\n agility: " + agility + "\n intelligence: " + intelligence + "\n attak: " + strike;
         }
     }
+  
 
-
-       
 }

@@ -25,21 +25,33 @@ namespace HahaDota
                 return Inf;
             }
         }
+        public void Winner()
+        {           
+            Map rld = Map.ThisWorld;
+
+            Console.Clear();
+            Console.WriteLine("You're WINNER!!");
+            refrenSolo();
+            rld.tryAgain();
+        }
+       
 
         public void Draw()
         {
             Console.WriteLine("Draw");
-            Thread.Sleep(4000);
+            Thread.Sleep(2000);
         }
 
         public void Bye()
         {
+            Console.Clear();
             Console.WriteLine("Good bye");
             Thread.Sleep(5000);
             Console.Clear();
             
-            
-            
+
+           
+
         }
         static void refrenSolo()
         {
@@ -159,52 +171,48 @@ namespace HahaDota
         }
     
 
-        public void Winner()
-        {
-            Console.Clear();
-            Console.WriteLine("You're WINNER!!");
-            refrenSolo();
-            tryAgain();
-        }
-        public void tryAgain()
-        {
-            
-
-            Console.WriteLine("Try agein?");
-            Console.WriteLine("1 - Yes");
-            Console.WriteLine("2 - No");
-            coupleSolo();
-            Map World = Map.ThisWorld;
-           string again = Console.ReadLine();
-           
-           
-
-                switch (again)
-                {
-                    case "1":
-                        World.frame.Clear();
-                        World.buildLevelMap();
-                        break;
-                    case "2":
-                        Bye();
-                        break;
-
-                }
-                
-           
+        
+        
 
 
 
-
-            /* public void HelloWorld()
+        public void HelloNeo()
              {
-                 Console.WriteLine("Приветствую тебя путник");
-                 Thread.Sleep(1000);
-                 Console.WriteLine("Как долго ты готов тут пробыть?");
-                 Thread.Sleep(5000);
-                 Console.WriteLine("Нажмите 1 или 2");
-
-             }*/
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.Beep(659, 300);
+            Console.WriteLine("Wake up Neo...");
+            Thread.Sleep(5000);
+            Console.Clear();
+            Console.Beep(659, 300);
+            Console.WriteLine("It's not Dota 2..");
+            Thread.Sleep(5000);
+            Console.Clear();
+            Console.Beep(659, 300);
+            Console.WriteLine("Matrix has You...");
+            Thread.Sleep(5000);
+            Console.Clear();
+            Console.Beep(659, 300);
+            Console.WriteLine("Follow the white rebbit...");
+            Thread.Sleep(5000);
+            Console.Clear();
         }
+        public void HelloWorld()
+            
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.BackgroundColor = ConsoleColor.Black;
+
+            Console.WriteLine("▒█   ▒█   ▒█▀▀▀▀█    ▒█   ▒█   ▒█▀▀▀▀█ ▒█  ▒█▀▀▀▄ ▒█▀▀▀▀█ ▀▀▀█▀▀▀▒█▀▀▀▀█ ▒█▒█" +
+                            "\n▒█░░░▒█░░░▒█░░░▒█░░░░▒█░░░▒█░░░▒█░░░▒█░▒█  ▒█░░░▒█▒█░░░▒█░░░▒█░░░▒█░░░▒█ ▒█▒█" +
+                            "\n▒█▄▄▄▄█ ▄ ▒█▄▄▄▄█░░░░▒█▄▄▄▄█ ▄ ▒█▄▄▄▄█░▒█  ▒█░░░▒█▒█░░░▒█░░░▒█░░░▒█▄▄▄▄█ ▒█▒█" +
+                            "\n▒█░░░▒█░░░▒█░░░▒█░░░░▒█░░░▒█░░░▒█   ▒█░░░  ▒█░░░▒█▒█░░░▒█░░░▒█░░░▒█░░░▒█ ▒█▒█" +
+                            "\n▒█   ▒█   ▒█   ▒█    ▒█   ▒█   ▒█   ▒█ ▒█  ▒█▄▄▄▀░▒█▄▄▄▄█   ▒█   ▒█   ▒█ ▒█▒█" +
+                            "\n                      ========AUTOMATIC  FIGHTS========                      " +
+                            "\n                      ====PRESS ANY KEY TO CONTINUE====                      ");
+            Console.ReadKey();
+            Console.Clear();
+        }
+
     }
 }

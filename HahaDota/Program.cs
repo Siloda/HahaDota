@@ -24,35 +24,19 @@ namespace HahaDota
             Inf = Inform.Information;
             Lvl = Map.ThisWorld;
 
-            
-
-            En.heroesList.Clear();
-            En.heroesList.Add(new Pudge());
-            En.heroesList.Add(new Viper());
-            En.heroesList.Add(new Luna());
-            En.heroesList.Add(new Lion());
-            En.heroesList.Add(new Sniper());
-
-                
-            En.itemList.Clear();
-            En.itemList.Add(new Stik());
-            En.itemList.Add(new Sword());
-            En.itemList.Add(new Bow());
-            En.itemList.Add(new Empty());
+            Inf.HelloWorld();
+            Inf.HelloNeo();
+            En.AddHero();
+            En.AddItem();                          
 
             Lvl.frame.Clear();
-            Lvl.buildLevelMap();
-            
-           
-            
+            Lvl.buildLevelMap(); 
+                    
             
 
             
 
                      
-
-            //En.Match();
-
             }
     }
 }
